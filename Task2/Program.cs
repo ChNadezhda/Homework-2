@@ -13,8 +13,8 @@ void Main()
     while(Work)
     {
         Console.WriteLine("Для начала работы введите - start. Для окончания - stop");
-        string a = Console.ReadLine();
-        switch (a)
+        string Text = Console.ReadLine();
+        switch (Text)
         {
             case "start": Task(); break;
             case "stop": Work = false; break;
@@ -26,17 +26,34 @@ void Task()
 {
     Console.WriteLine("Введите число: ");
     int number = int.Parse(Console.ReadLine());
+      
+    bool thirdCharIs = ThirdCharThereOrNot(number);
+    
+    if (thirdCharIs) 
+    {
+        int digit = ThirdDigit(number);
+        Console.WriteLine($"В числе {number} третья цифра равна - {digit}");
+    }
 
-    int digit = ThirdDigit(number);
-    Console.WriteLine($"В числе {number} третья цифра равна - {digit}");
+    else Console.WriteLine("Третьей цифры нет");
+}
 
+bool ThirdCharThereOrNot(int number)
+{
+    string IntToString = number.ToString(); 
+    var StringLength = IntToString.Length;
+
+    int a = Convert.ToInt32(StringLength);
+
+    return a > 2;
 }
 
 int ThirdDigit(int number) 
 {
-    string a = number.ToString(); //преобразовать число в строку
-    string b = a.Substring(2, 1); //из строки извлечь подстроку 
-    int c = Convert.ToInt32(b); //преобразовать строку в число
-    return c;
+    string IntToString = number.ToString(); 
+    string ThirdCharString = IntToString.Substring(2, 1);
+    int StringToInt = Convert.ToInt32(ThirdCharString); 
+    
+    return StringToInt;
 }
 

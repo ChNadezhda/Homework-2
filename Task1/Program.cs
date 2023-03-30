@@ -13,8 +13,9 @@ void Main()
     while(Work)
     {
         Console.WriteLine("Для начала работы введите - start. Для окончания - stop");
-        string a = Console.ReadLine();
-        switch (a)
+        
+        string Text = Console.ReadLine();
+        switch (Text)
         {
             case "start": Task(); break;
             case "stop": Work = false; break;
